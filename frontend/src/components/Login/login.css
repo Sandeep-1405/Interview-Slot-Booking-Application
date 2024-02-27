@@ -1,0 +1,67 @@
+.limg{
+  /*position: absolute;
+  top: 20%;
+  left: 10%;*/
+  display: none;
+}
+
+
+.content {
+    position: relative;
+    background: transparent;
+    border: 2px solid black;
+    text-align: center;
+    width: 40%;
+    height: 62%;
+    margin: auto;
+    top: 20%;
+  }
+  .loginheading{
+    color: rgb(18, 162, 229);
+    font-weight: bold;
+    font-size: 42px;
+    margin: 10px;
+  }
+  .input{
+    height: 40px;
+    width: 85%;
+    margin: 10px;
+    
+    border-left: 4px solid aquamarine;
+    border-top: 0px solid rgba(212, 207, 207, 0.077);
+    border-bottom: 2px solid aquamarine;
+    border-right: 0px solid rgba(52, 212, 221, 0.725);
+    font-weight: bold;
+    padding-left: 10px;
+  }
+  .forgot{
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px;
+    padding-left: 20px;
+  }
+  .forgot:hover{
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+  }
+.btns{
+  color: black;
+  background-color: rgb(255, 255, 251);
+  border: 0px;
+  height: 40px;
+  width: 40%;
+  font-size: 18px;
+  
+}
+
+@media screen and (max-width:768px){
+  .bg{
+    height: 100vh;
+  }
+  .content{
+    width: 90%;
+    height: 100;
+    padding-bottom: 20px;
+  }
+}

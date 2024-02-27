@@ -1,0 +1,59 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.bg{
+    background-color: aquamarine;
+    text-align: center;
+    height: 100vh;
+    
+}
+.card{
+    position: relative;
+    top: 3%;
+    background-color: aliceblue;
+    border-radius: 32px;
+    width: 50%;
+    padding: 20px;
+    margin: auto;
+   
+}
+.hr{
+    color: aquamarine;
+    margin-left: 100px;
+}
+.img{
+    /*position: relative;
+    top: 18%;
+    right: 15%;
+    width: 25vw;
+    height: 50vh;*/
+    display: none;
+}
+.sinput{
+    width: 80%;
+    height: 50px;
+    margin: 10px;
+    border-left: 4px solid aquamarine;
+    border-top: 0px solid rgba(212, 207, 207, 0.077);
+    border-bottom: 2px solid aquamarine;
+    border-right: 0px solid rgba(52, 212, 221, 0.725);
+    font-weight: bold;
+    padding-left: 10px;
+}
+.error{
+    color: red;
+}
+@media screen and (max-width:768px) {
+    
+    .card{
+        width: 90%;
+        margin-bottom: 20px;
+    }
+    .bg{
+        height: auto;
+    }
+}
+.pass{
+    width: 70%;
+}
