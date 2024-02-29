@@ -1,11 +1,20 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 function Admin(){
     const [email,setemail] = useState('')
     const [password,setpassword] = useState('')
+    const [showerr,seterror] = useState('')
+    
+    const navigate = useNavigate()
 
     function onclicklogin(){
         console.log(email)
+        if (email === 'sandeep@admin.com' && password === "Sandeep@123"){
+            navigate('/adminhome',{replace:true})
+        }else{
+            seterror("Invalid Login Details")
+        }
         
     }
     return(
@@ -16,6 +25,7 @@ function Admin(){
             <h6>Password</h6>
             <input type="password" name="password" placeholder="Password" onChange={e=>setpassword(e.target.value)} />
             <button onClick={onclicklogin}>Login</button>
+            <p>{showerr}</p>
         </div>
     )
 }

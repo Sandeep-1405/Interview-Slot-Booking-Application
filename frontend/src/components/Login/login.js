@@ -11,6 +11,7 @@ const Login = () =>{
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
     const [errormsg,seterrMsg] = useState('')
+    const [user,setuser] = useState('')
     const [showval,setShowval] = useState(false)
 
     function onChangeEmail(event){
@@ -35,11 +36,12 @@ const Login = () =>{
         event.preventDefault()
         if (email.length === 0 || password.length===0){
             seterrMsg("All Fields Required")
+            
         }else{
             seterrMsg("")
             axios.post('http://localhost:8081/login',{email,password})
             .then(res=>{
-                console.log(res)
+                //console.log(res)
                 if(res.data.length === 0){
                     seterrMsg("Invalid Details")
                     //console.log("Invalid Details")
@@ -63,6 +65,10 @@ const Login = () =>{
 
             <div className="content">
                 <h1 className='loginheading'>Login</h1>
+                <select className='w-25' onChange={e=>(setuser(e.target.value))}>
+                    <option value="User">User</option>
+                    <option value="Admin">Admin</option>
+                </select>
 
                 <div>
                     <input type='email' placeholder='Email' className='sinput'  onChange={onChangeEmail} required/>
@@ -87,6 +93,7 @@ const Login = () =>{
                 </div>
                 
             </div>
+            <p>{user}</p>
             
             
         </div>

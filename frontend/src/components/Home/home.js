@@ -10,7 +10,7 @@ import 'react-datetime/css/react-datetime.css';
 
 import './home.css'
 
-function Home(props){
+function Home(){
 
     const [usersData,setData] = useState([])
     const [date,setdate] = useState('')
@@ -82,7 +82,7 @@ function Home(props){
             
             axios.put('http://localhost:8081/interview',{email,date,time,topic})
             .then(res=>{
-                console.log(res)
+                //console.log(res)
                 if (res.data === "Please Provide Registered Email (Which Given While Registering)"){
                     seterr("Please Provide Registered Email (Which Given While Registering)")
                 }else if(new Date(date) <= new Date().setDate(new Date().getDate()+6)){
@@ -144,7 +144,7 @@ function Home(props){
 
                     <input type='email' name='email' placeholder='Your Email' required className='m-5' onChange={onchangeemail}/>
                     
-                    <input type='date' placeholder="Select a date" onChange={onchangedate} required className='m-5'min/>
+                    <input type='date' placeholder="Select a date" onChange={onchangedate} required className='m-5'/>
 
                     <input type='time' placeholder="Select a date" onChange={onchangetime} required className='m-5'/>
                     
@@ -155,13 +155,13 @@ function Home(props){
                         <option value="Full Stack Developer">Full Stack Developer</option>
                         <option value="Frontend Developer">Frontend Developer</option>
                         <option value="Backend Developer">Backend Developer</option>
-                        <option value="Python Developer">Python</option>
-                        <option value="React Developer">React JS</option>
-                        <option value="Java Developer">Java</option>
+                        <option value="Python">Python</option>
+                        <option value="React JS">React JS</option>
+                        <option value="Java">Java</option>
                         <option value="SQL">SQL </option>
                         <option value="Only HTML CSS">Only HTML CSS</option>
-                        <option value="Node js Developer">Node JS</option>
-                        <option value="JavaScript Developer">JavaScript</option>
+                        <option value="Node js ">Node JS</option>
+                        <option value="JavaScript ">JavaScript</option>
                         <option value="other Topics">Other Topics</option>
                     </select>
                     

@@ -1,0 +1,30 @@
+.body{
+    border: 10px solid tomato;
+}
+table, th, td {
+    border: 1px solid black;
+    background-color: azure;
+    min-width: 100px;
+}
+
+.statuscard{
+    background-color: tan;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 2px solid ;
+    min-height: 50px;
+    min-width: 250px;
+    width: 50vw;
+}
+@media screen and (max-width:768px) {
+    .statuscard{
+        display: flex;
+        flex-direction: column;
+    }
+    
+}

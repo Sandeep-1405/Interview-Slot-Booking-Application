@@ -183,11 +183,24 @@ app.put('/cancel',(req,res)=>{
     const {email,date,time,topic} = req.body
     const date1 = '0000-00-00';
     const time2 = '00:00:00';
-    const topic3 = 'Cancelled'
+    const topic3 = 'None'
     
     const cancelquery = "update users SET `Date` = ?, `Time` = ?, `Topic` = ? where Email = ?"
 
      db.query(cancelquery,[date1,time2,topic3,email],(error,data)=>{
+        if (error){
+            return res.json(error)
+        }
+        return res.json(data)
+    })
+})
+
+//update status
+
+app.put('/status',async(req,res)=>{
+    const {email,option} = req.body
+    const qry = 'update users set `Status` = ? where Email = ?'
+    await db.query(qry,[option,email],(error,data)=>{
         if (error){
             return res.json(error)
         }
