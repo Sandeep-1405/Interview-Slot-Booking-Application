@@ -47,7 +47,7 @@ function Admin(){
                 <button className="btn btn-danger" onClick={onclicklogout}>Logout</button>
             </div>
             <div className="tdiv">
-                <table className="m-auto table table-responsive">
+                <table className="m-auto">
                     <thead>
                         <tr>
                             <th className="p-3">Name</th>

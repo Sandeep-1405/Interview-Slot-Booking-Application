@@ -29,20 +29,6 @@ function Home(){
     const navigate = useNavigate();
 
     useEffect(()=>{
-        let getstate = localStorage.getItem('setstate')
-        setstate(getstate)
-
-        let getname = localStorage.getItem('name');
-        let getemail = localStorage.getItem('email');
-        let getdate = localStorage.getItem('date');
-        let gettime = localStorage.getItem('time');
-        let gettopic = localStorage.getItem('topic');
-
-        setname(getname)
-        setemail(getemail)
-        setdate(getdate)
-        settime(gettime)
-        settopic(gettopic)
 
         axios.get('http://localhost:8081/getdata')
         .then(res=> {
@@ -90,13 +76,6 @@ function Home(){
                 }
                 else{
                     setstate(true)
-                    localStorage.setItem('setstate',true);
-                    localStorage.setItem('name',name);
-                    localStorage.setItem('email',email);
-                    localStorage.setItem('date',date);
-                    localStorage.setItem('time',time);
-                    localStorage.setItem('topic',topic);
-                    
                     seterr('')
                 }
             })
@@ -104,17 +83,16 @@ function Home(){
         }else{
             seterr("All fields Required*")
         }
-        
     }
 
     function onclickcancel(){
         
-        localStorage.setItem('setstate',false)
+        setstate(false)
         
         axios.put('http://localhost:8081/cancel',{email,date,time,topic})
         .then(res=>{
             //console.log("Interview Cancelled")
-            console.log(res.data)
+            //console.log(res.data)
             seterr("Interview Cancelled")
         })
         .catch(error=> console.log(error))
@@ -184,10 +162,6 @@ function Home(){
         )
     }
 
-    
-
-    
-
     return(
         <div className='home'>
             <div className='text-center m-5 '>
@@ -206,12 +180,9 @@ function Home(){
                     ))}
                 </ul>
 
-                
-
                 {state ? slotsuccess() : selectslot()}
 
                 <p className='text-danger pt-3'>{err}</p>
-                
                 
             </div>
         </div>
