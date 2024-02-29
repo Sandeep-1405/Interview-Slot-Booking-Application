@@ -4,9 +4,9 @@ import Login from './components/Login/login';
 import Home from './components/Home/home';
 import Signupsuc from './components/signupsuc/signupsuc';
 import Forgot from './components/Forgot/forgot';
-import Admin from './components/Admin/admin'
+
 import './App.css';
-import Adminhomepage from './components/Adminhomepage/adminhome';
+import Admin from './components/Admin/admin';
 
 function App() {
   return (
@@ -19,7 +19,6 @@ function App() {
           <Route exact path='/success' Component={Signupsuc} />
           <Route exact path='/forgot' Component={Forgot} />
           <Route exact path='/admin' Component={Admin} />
-          <Route exact path='/adminhome' Component={Adminhomepage} />
         </Routes>
       </BrowserRouter>
     </div>

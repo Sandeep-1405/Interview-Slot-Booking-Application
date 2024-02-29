@@ -3,15 +3,15 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './login.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import Forgot from '../Forgot/forgot'
-import Home from '../Home/home'
+//import Forgot from '../Forgot/forgot'
+//import Home from '../Home/home'
 
 const Login = () =>{
 
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
     const [errormsg,seterrMsg] = useState('')
-    const [user,setuser] = useState('')
+    const [user,setuser] = useState('User')
     const [showval,setShowval] = useState(false)
 
     function onChangeEmail(event){
@@ -28,32 +28,33 @@ const Login = () =>{
     const navigate = useNavigate();
     const sign = useNavigate();
 
-    function handleForgot(){
-        navigate('/Forgot')
-    }
-
     function onClickLogin(event){
         event.preventDefault()
         if (email.length === 0 || password.length===0){
             seterrMsg("All Fields Required")
-            
         }else{
             seterrMsg("")
-            axios.post('http://localhost:8081/login',{email,password})
-            .then(res=>{
-                //console.log(res)
-                if(res.data.length === 0){
-                    seterrMsg("Invalid Details")
-                    //console.log("Invalid Details")
-                }
-                else if (res.data[0].Email === email && res.data[0].Password === password){
-                    navigate('/home',{ replace: true })
-                    /*this.props.history.replace('/home');*/
-                }
-            })
-            .catch(err=>{
-                console.log(err)
-            })   
+            if (user === "Admin" && email === "sandeep@admin.com" && password === "Sandeep@123"){
+                navigate('/admin')
+            }else if(user === "User"){
+                axios.post('http://localhost:8081/login',{email,password})
+                .then(res=>{
+                    //console.log(res)
+                    if(res.data.length === 0){
+                        seterrMsg("Invalid Details")
+                        //console.log("Invalid Details")
+                    }
+                    else if (res.data[0].Email === email && res.data[0].Password === password){
+                        navigate('/home',{ replace: true })
+                        /*this.props.history.replace('/home');*/
+                    }
+                })
+                .catch(err=>{
+                    console.log(err)
+                })  
+            }else{
+                seterrMsg("Please Select User Type")
+            } 
         }
     }
     function onClickSignup(){
@@ -65,7 +66,7 @@ const Login = () =>{
 
             <div className="content">
                 <h1 className='loginheading'>Login</h1>
-                <select className='w-25' onChange={e=>(setuser(e.target.value))}>
+                <select className='w-25 m-3' onChange={e=>(setuser(e.target.value))}>
                     <option value="User">User</option>
                     <option value="Admin">Admin</option>
                 </select>
@@ -77,25 +78,18 @@ const Login = () =>{
 
                     <button className = "btn btn-secondary" onClick={handleShowbtn}>{showval ? 'Hide':'Show'}</button>
 
-                    <p>{errormsg}</p>
+                    <p className='text-danger font-weight-bold m-3'>{errormsg}</p>
 
-                    <div className=''>
-                        <a href='' className='forgot' onClick={handleForgot}>forgot password</a>
+                    <div className='d-flex'>
+                        
+                        <a href='http://localhost:3000/Forgot' className='forgot'>forgot password</a>
+
                         <a href='http://localhost:3000/' onClick={onClickSignup} className='forgot'>signup</a>
 
-                        <a href='http://localhost:3000/admin'  className='forgot'>Admin Login</a>
-                        
                     </div>
-
                     <button className='btns btn btn-primary' onClick={onClickLogin}>Login</button>
-                    
-                    
                 </div>
-                
-            </div>
-            <p>{user}</p>
-            
-            
+            </div>          
         </div>
         
     )

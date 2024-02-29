@@ -111,10 +111,6 @@ function Home(){
         
         localStorage.setItem('setstate',false)
         
-        /*setdate('0000-00-00')
-        settime('00:00:00')
-        settopic('Cancelled')*/
-
         axios.put('http://localhost:8081/cancel',{email,date,time,topic})
         .then(res=>{
             //console.log("Interview Cancelled")
