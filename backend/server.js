@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql");
-const twilio = require("twilio")
+const twilio = require("twilio");
+const jwt = require("jsonwebtoken")
 
 const app = express();
 
@@ -81,11 +82,10 @@ app.post('/create', async(req, res) => {
         if (error) {
             return res.json(error);
         }
-
         const dbOtp = data[0].otp;
 
-        console.log('Entered OTP:', otp);
-        console.log('Stored OTP:', dbOtp);
+        //console.log('Entered OTP:', otp);
+        //console.log('Stored OTP:', dbOtp);
 
         if (dbOtp == otp) {
             
@@ -110,9 +110,13 @@ app.post('/login',async(req,res)=>{
     db.query(sql,[email],(error,data)=>{
         if(error){
             return res.json(error)
+        }else{
+            const jwttoken = jwt.sign(req.body.email,"MY_Secreate_key")
+            //console.log({jwttoken})
+            return res.json([...data,data.twt = {jwttoken}])   
         }
-        return res.json(data)
     })
+    
 })
 
 

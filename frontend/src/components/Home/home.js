@@ -2,7 +2,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-
+import Cookies from 'js-cookie'
 
 /*import DatePicker from 'react-datetime';
 import moment from 'moment';*/
@@ -23,13 +23,15 @@ function Home(){
     const [name,setname] = useState('')
     const [topic,settopic] = useState('')
 
-    
-
-
     const navigate = useNavigate();
 
-    useEffect(()=>{
+    const token = Cookies.get("jwt")
+    if (token === undefined){
+        navigate('/')
+    }
 
+    useEffect(()=>{
+        //console.log(Cookies.get('email'))
         axios.get('http://localhost:8081/getdata')
         .then(res=> {
             setData(res.data)
@@ -37,6 +39,8 @@ function Home(){
         },[])
         .catch(err=>console.log(err))
     },[]);
+
+
     
     function onchangedate(event){
         setdate(event.target.value);
@@ -50,7 +54,8 @@ function Home(){
     }
 
     function onClickLogout(){
-        navigate('/login',{replace:true})
+        Cookies.remove("jwt")
+        navigate('/',{replace:true})
     }
     /*const yesterday = moment().add(2, 'day');
     const disablePastDt = current => {

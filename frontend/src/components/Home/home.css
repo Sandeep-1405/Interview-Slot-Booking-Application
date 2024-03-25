@@ -7,7 +7,6 @@
     justify-content: center;
     list-style-type: none;
     
-
     padding: 20px;
     width: 100%;
     overflow: hidden;
@@ -42,7 +41,7 @@
 }
 @keyframes scrollX{     /*used to translate an element along the horizontal axis.*/
     from {
-        left: translateX(0);
+        transform: translateX(0);
       }
       to {
         transform: translateX(-360%);

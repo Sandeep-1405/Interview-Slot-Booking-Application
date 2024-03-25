@@ -9,12 +9,13 @@ import './App.css';
 import Admin from './components/Admin/admin';
 
 function App() {
+  document.title = "InterviewMe"
   return (
     <div >
       <BrowserRouter>
         <Routes>
-          <Route exact path='/' Component={Signup} />
-          <Route exact path='/login' Component={Login} />
+          <Route exact path='/Signup' Component={Signup} />
+          <Route exact path='/' Component={Login} />
           <Route exact path='/home' Component={Home} />
           <Route exact path='/success' Component={Signupsuc} />
           <Route exact path='/forgot' Component={Forgot} />

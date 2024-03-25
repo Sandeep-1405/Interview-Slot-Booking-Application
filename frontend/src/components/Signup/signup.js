@@ -1,7 +1,8 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useState,useEffect} from 'react'
 import { useNavigate } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Cookies from 'js-cookie';
 
 import './signup.css'
 
@@ -20,6 +21,14 @@ function Signup(){
 
     
     let navigate = useNavigate()
+
+    useEffect(()=>{
+        const token = Cookies.get("jwt")
+        //console.log(token)
+        if (token !== undefined){
+            navigate('/home')
+        }
+    },[])
 
     function handleSubmit(event){
         event.preventDefault()
@@ -48,7 +57,6 @@ function Signup(){
             .then(res=> {
                 if (res.data === "PhoneNumber Already Exists"){
                     setError("PhoneNumber Already Exists")
-                    
                 }else{
                     setState(true)
                     console.log(res)
@@ -66,7 +74,7 @@ function Signup(){
     }
 
     function onSubmit(){
-        navigate('/login');
+        navigate('/');
     }
 
     return(

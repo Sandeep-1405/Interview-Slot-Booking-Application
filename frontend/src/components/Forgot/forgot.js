@@ -1,15 +1,19 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+
 function Forgot(){
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
     const [error,setErr] = useState('')
 
     let navigate = useNavigate()
-
+    
+    
+    
     function onSubmit(){
-        if (password.length !=0 && email.length !=0){
+        if (password.length !== 0 && email.length !== 0){
             axios.put('http://localhost:8081/forgot',{email,password})
             .then(res=>{
                 console.log(res)
@@ -17,7 +21,7 @@ function Forgot(){
                     setErr("Email not Exist")
                 }else{
                     setErr("Success")
-                    navigate('/login');
+                    navigate('/');
                 }
             })
             .catch(err =>console.log(err))
@@ -26,7 +30,7 @@ function Forgot(){
         }  
     }
     function onclickBacktoLogin(){
-        navigate('/login');
+        navigate('/');
     }
     return(
         <div className="text-center">
