@@ -5,7 +5,7 @@ import './signupsuc.css'
 function Signupsuc(){
     const navigate = useNavigate()
     function onClickLogin(){
-        navigate('/login',{ replace: true })
+        navigate('/',{ replace: true })
     }
     return(
         <div className="shadow text-center successbg">

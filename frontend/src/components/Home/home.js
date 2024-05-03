@@ -180,7 +180,7 @@ function Home(){
                         /*<Profile Details = {Details} key = {Details.ID}/>*/
                         <li className='child p-2' key={Details.ID}>
                             <p>{Details.Name}</p>
-                            <p>{Details.Email.slice(0,3)+"xxx@gmail.com"}</p>
+                            <p>{Details.Email.slice(0,3)+"***@gmail.com"}</p>
                         </li>
                     ))}
                 </ul>

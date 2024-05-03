@@ -211,3 +211,5 @@ app.put('/status',async(req,res)=>{
         return res.json(data)
     })
 })
+
+//mongodb+srv://Sandeep:Sandeep@123@cluster0.zyillcu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0

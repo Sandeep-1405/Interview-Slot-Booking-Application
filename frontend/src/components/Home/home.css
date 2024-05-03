@@ -36,7 +36,7 @@
     align-items: center;
     justify-content: space-around;
     width: 20%;
-    animation: scrollX 30s linear infinite;
+    animation: scrollX 20s linear infinite;
     
 }
 @keyframes scrollX{     /*used to translate an element along the horizontal axis.*/
